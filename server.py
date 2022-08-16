@@ -3,9 +3,11 @@ import random
 import asyncio
 from threading import Thread
 
-from data import data
+import get_image
 
-
+asyncio.run(get_image.main2())
+with open ('picture.txt', 'rb') as file:
+    data = file.read()
 chunk_len = random.randint(500, 1500)
 chunks = [(index, data[i:i+chunk_len])
           for index, i in enumerate(range(0, len(data), chunk_len))]
